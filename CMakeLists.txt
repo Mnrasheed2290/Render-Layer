@@ -27,6 +27,11 @@ add_executable(outline_main
         approach/outline_main.cpp
         approach/Stream/streamtype.h
         approach/Render/render.h
+        v1.h
+        v2.h
+        v3.h
+        v4.h
+        v5.h
 )
 
 add_executable(render_test

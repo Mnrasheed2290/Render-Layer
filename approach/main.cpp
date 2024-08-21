@@ -1,13 +1,63 @@
-#include "approach/Render/xml.h"
-using std::cout;
+#include "derivednode.h"
+#include "v1.h"
+#include "v2.h"
+#include "v3.h"
+#include "v4.h"
+#include "v5.h"
+#include "cnn.h"
+#include <opencv2/opencv.hpp>
+#include <iostream>
 
 int main() {
- Approach::Render::XML div("div");
+ MyNamespace::DerivedNode node;
+ node.someMethod(); // Call the method to see if it works
 
- div.id = "cool";
- div.classes = {"cool", "nice"};
- div.attributes = {{"style", "color: red;"}};
- div.content = "Hello, World!";
+ // Load an image
+ cv::Mat image = cv::imread("path/to/your/image.jpg");
+ if (image.empty()) {
+  std::cerr << "Could not open or find the image" << std::endl;
+  return -1;
+ }
 
- cout << div << '\n';
-}
+ // Processing stages
+ Approach::Render::V1 v1;
+ v1.process(image);
+
+ Approach::Render::V2 v2;
+ v2.process(image);
+
+ Approach::Render::V3 v3;
+ v3.process(image);
+
+ Approach::Render::V4 v4;
+ Approach::Render::V5 v5;
+
+ // Feedback loop for V4 and V5
+ bool needsProcessing = true;
+ int maxIterations = 10; // limit to avoid infinite loops
+ int iteration = 0;
+
+ while (needsProcessing && iteration < maxIterations) {
+  v4.process(image);
+  needsProcessing = v4.needsFurtherProcessing(image);
+
+  if (!needsProcessing) {
+   v5.process(image);
+   needsProcessing = v5.needsFurtherProcessing(image);
+  }
+
+  iteration++;
+ }
+
+ // Display final processed image
+ cv::imshow("Final Processed Image", image);
+ cv::waitKey(0);
+
+ // CNN for classification
+ CNN cnn;
+ cnn.loadModel("path/to/your/model");
+ std::string result = cnn.classify(image);
+
+ std::cout << "Classification result: " << result << std::endl;
+ std::cout << "Hello World" << std::endl;
+ return 0;
