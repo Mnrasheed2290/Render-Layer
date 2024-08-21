@@ -5,8 +5,9 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Path to OpenCV installation
-set(OpenCV_DIR "C:/Users/maria/Downloads/opencv/build/x64/vc16/bin") # Update to the correct path
+set(OpenCV_DIR "C:/Users/maria/Downloads/opencv/build")
 
+# Find OpenCV
 find_package(OpenCV REQUIRED)
 
 if (OpenCV_FOUND)
@@ -15,10 +16,10 @@ else()
     message(FATAL_ERROR "OpenCV not found!")
 endif()
 
-include_directories(.)
-include_directories(tests)
+# Include OpenCV directories
 include_directories(${OpenCV_INCLUDE_DIRS})
 
+# Define executables
 add_executable(render
         approach/Stream/container.h
         approach/Render/node.h
@@ -55,6 +56,6 @@ add_executable(test_opencv
 )
 
 # Link OpenCV libraries
-target_link_libraries(render ${OpenCV_LIBRARIES})
-target_link_libraries(outline_main ${OpenCV_LIBRARIES})
-target_link_libraries(test_opencv ${OpenCV_LIBRARIES})
+target_link_libraries(render ${OpenCV_LIBS})
+target_link_libraries(outline_main ${OpenCV_LIBS})
+target_link_libraries(test_opencv ${OpenCV_LIBS})
