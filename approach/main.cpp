@@ -13,7 +13,7 @@ int main() {
  node.someMethod(); // Call the method to see if it works
 
  // Load an image
- cv::Mat image = cv::imread("path/to/your/image.jpg");
+ cv::Mat image = cv::imread("C:/Users/maria/OneDrive/Desktop/download.jpg");
  if (image.empty()) {
   std::cerr << "Could not open or find the image" << std::endl;
   return -1;
@@ -59,5 +59,6 @@ int main() {
  std::string result = cnn.classify(image);
 
  std::cout << "Classification result: " << result << std::endl;
- std::cout << "Hello World" << std::endl;
+
  return 0;
+}

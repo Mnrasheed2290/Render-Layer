@@ -1,13 +1,23 @@
 cmake_minimum_required(VERSION 3.28)
-project(render)
-set(PROJECT_VERSION_MAJOR 1)
-set(PROJECT_VERSION_MINOR 0)
+project(render VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Path to OpenCV installation
+set(OpenCV_DIR "C:/Users/maria/Downloads/opencv/build/x64/vc16/bin") # Update to the correct path
+
+find_package(OpenCV REQUIRED)
+
+if (OpenCV_FOUND)
+    message(STATUS "OpenCV found: ${OpenCV_VERSION}")
+else()
+    message(FATAL_ERROR "OpenCV not found!")
+endif()
+
 include_directories(.)
 include_directories(tests)
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 add_executable(render
         approach/Stream/container.h
@@ -32,9 +42,19 @@ add_executable(outline_main
         v3.h
         v4.h
         v5.h
+        cnn.h
 )
 
 add_executable(render_test
         tests/doctest.h
         tests/test.cpp
 )
+
+add_executable(test_opencv
+        approach/test_opencv.cpp
+)
+
+# Link OpenCV libraries
+target_link_libraries(render ${OpenCV_LIBRARIES})
+target_link_libraries(outline_main ${OpenCV_LIBRARIES})
+target_link_libraries(test_opencv ${OpenCV_LIBRARIES})
