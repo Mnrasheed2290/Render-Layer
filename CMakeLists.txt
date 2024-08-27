@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.28)
 project(render VERSION 1.0)
 
+# Set C++ standard
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -28,6 +29,7 @@ add_executable(render
         approach/main.cpp
         approach/Stream/streamtype.h
         approach/Render/render.h
+        approach/Render/v2.h
 )
 
 add_executable(outline_main
@@ -38,21 +40,25 @@ add_executable(outline_main
         approach/outline_main.cpp
         approach/Stream/streamtype.h
         approach/Render/render.h
-        v1.h
-        v2.h
-        v3.h
-        v4.h
-        v5.h
+        approach/Render/v1.h
+        approach/Render/v2.h
+        approach/Render/v3.h
+        approach/Render/v4.h
+        approach/Render/v5.h
         cnn.h
+        approach/Render/derivednode.cpp
+        approach/Render/v2.h
 )
 
 add_executable(render_test
         tests/doctest.h
         tests/test.cpp
+        approach/Render/v2.h
 )
 
 add_executable(test_opencv
         approach/test_opencv.cpp
+        approach/Render/v2.h
 )
 
 # Link OpenCV libraries

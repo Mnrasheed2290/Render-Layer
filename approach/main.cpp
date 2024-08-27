@@ -1,16 +1,16 @@
 #include "derivednode.h"
-#include "v1.h"
+#include "Render/v1.h"
 #include "v2.h"
-#include "v3.h"
-#include "v4.h"
-#include "v5.h"
+#include "Render/v3.h"
+#include "Render/v4.h"
+#include "Render/v5.h"
 #include "cnn.h"
 #include <opencv2/opencv.hpp>
 #include <iostream>
 
 int main() {
  MyNamespace::DerivedNode node;
- node.someMethod(); // Call the method to see if it works
+ node.someMethod(); // Call the method to check if it works
 
  // Load an image
  cv::Mat image = cv::imread("C:/Users/maria/OneDrive/Desktop/download.jpg");
@@ -34,7 +34,7 @@ int main() {
 
  // Feedback loop for V4 and V5
  bool needsProcessing = true;
- int maxIterations = 10; // limit to avoid infinite loops
+ int maxIterations = 10; // Limit to avoid infinite loops
  int iteration = 0;
 
  while (needsProcessing && iteration < maxIterations) {

@@ -1,35 +1,15 @@
-#include "approach/Stream/container.h"
+#ifndef DERIVEDNODE_H
+#define DERIVEDNODE_H
 
-namespace Approach::Render {
- using std::string;
+#include "approach/Render/node.h"
+#include <opencv2/opencv.hpp>
 
- class Node : public Container {
+namespace MyNamespace {
+ class DerivedNode : public Approach::Render::Node {
  public:
-	explicit Node(const string &content) {
-	 this->content = content;
-	 this->SetRenderID();
-	};
-
-	Node() {
-	 this->content = "";
-	 this->SetRenderID();
-	};
-
-	void RenderCorpus(std::ostream &stream) override {
-	 stream << this->content << '\n';
-	 for (auto c: this->nodes) {
-		stream << (Node *) c;
-	 }
-	}
-
-	inline friend Container &operator<<(Container &to, Stream &node) {
-	 to.nodes.push_back(&node);
-	 return to;
-	}
-
-	inline friend Container &operator<<(Container &to, Stream *node) {
-	 to.nodes.push_back(node);
-	 return to;
-	}
+  DerivedNode();
+  void someMethod();
  };
-}// namespace Approach::Render
+}
+
+#endif // DERIVEDNODE_H
