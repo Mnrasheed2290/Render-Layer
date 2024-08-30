@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.28)
-project(render VERSION 1.0)
+project(RenderLayer VERSION 1.0)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Path to OpenCV installation
-set(OpenCV_DIR "C:/Users/maria/Downloads/opencv/build")
+set(OpenCV_DIR "C:/opencv_install/x64/mingw/lib")
 
 # Find OpenCV
 find_package(OpenCV REQUIRED)
@@ -50,18 +50,8 @@ add_executable(outline_main
         approach/Render/v2.h
 )
 
-add_executable(render_test
-        tests/doctest.h
-        tests/test.cpp
-        approach/Render/v2.h
-)
-
-add_executable(test_opencv
-        approach/test_opencv.cpp
-        approach/Render/v2.h
-)
 
 # Link OpenCV libraries
 target_link_libraries(render ${OpenCV_LIBS})
 target_link_libraries(outline_main ${OpenCV_LIBS})
-target_link_libraries(test_opencv ${OpenCV_LIBS})
+
