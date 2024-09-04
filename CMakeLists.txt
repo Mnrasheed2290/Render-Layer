@@ -50,8 +50,14 @@ add_executable(outline_main
         approach/Render/v2.h
 )
 
+# Add the new executable for image reading
+add_executable(image_reader
+        approach/Render/v2.h
+        approach/Render/image_reader.cpp
+
+)
 
 # Link OpenCV libraries
 target_link_libraries(render ${OpenCV_LIBS})
 target_link_libraries(outline_main ${OpenCV_LIBS})
-
+target_link_libraries(image_reader ${OpenCV_LIBS})
