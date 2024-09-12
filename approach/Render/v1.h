@@ -8,12 +8,12 @@ namespace Approach::Render {
 
  class V1 {
  public:
-  void process(cv::Mat &image) {
-   // Edge detection
-   cv::Mat edges;
-   cv::Canny(image, edges, 100, 200);
-   image = edges;
-   std::cout << "Processing in V1 (Edge Detection)" << std::endl;
+  cv::Mat process(const cv::Mat& image) {
+   cv::Mat processed;
+   // Example processing (modify as needed)
+   image.copyTo(processed);
+   std::cout << "Processing in V1" << std::endl;
+   return processed;
   }
  };
 

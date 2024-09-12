@@ -20,7 +20,13 @@ endif()
 # Include OpenCV directories
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-# Define executables
+# Path to TinyFileDialogs
+set(TINYFILEDIALOGS_DIR "C:/Users/maria/Downloads/tinyfiledialogs-current/tinyfiledialogs")
+
+# Include TinyFileDialogs headers
+include_directories(${TINYFILEDIALOGS_DIR})
+
+# Define executables and source files
 add_executable(render
         approach/Stream/container.h
         approach/Render/node.h
@@ -45,19 +51,21 @@ add_executable(outline_main
         approach/Render/v3.h
         approach/Render/v4.h
         approach/Render/v5.h
-        cnn.h
+        approach/Render/cnn.h
         approach/Render/derivednode.cpp
-        approach/Render/v2.h
 )
 
-# Add the new executable for image reading
 add_executable(image_reader
-        approach/Render/v2.h
         approach/Render/image_reader.cpp
-
 )
 
 # Link OpenCV libraries
 target_link_libraries(render ${OpenCV_LIBS})
 target_link_libraries(outline_main ${OpenCV_LIBS})
 target_link_libraries(image_reader ${OpenCV_LIBS})
+
+# Compile TinyFileDialogs as part of the image_reader target
+target_sources(image_reader PRIVATE ${TINYFILEDIALOGS_DIR}/tinyfiledialogs.c)
+
+# Ensure TinyFileDialogs source is compiled with C++ standard
+set_source_files_properties(${TINYFILEDIALOGS_DIR}/tinyfiledialogs.c PROPERTIES COMPILE_FLAGS "-std=c++23")

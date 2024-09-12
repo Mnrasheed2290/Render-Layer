@@ -9,6 +9,7 @@
 #include <iostream>
 
 int main() {
+ // Initialize your derived node (if needed)
  MyNamespace::DerivedNode node;
  node.someMethod(); // Call the method to check if it works
 
@@ -55,7 +56,7 @@ int main() {
 
  // CNN for classification
  CNN cnn;
- cnn.loadModel("path/to/your/model");
+ cnn.loadModel("path/to/your/model"); // Update this path
  std::string result = cnn.classify(image);
 
  std::cout << "Classification result: " << result << std::endl;

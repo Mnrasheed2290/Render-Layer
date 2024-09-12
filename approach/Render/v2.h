@@ -8,12 +8,12 @@ namespace Approach::Render {
 
  class V2 {
  public:
-  void process(cv::Mat &image) {
-   // Gaussian blur
-   cv::Mat blurred;
-   cv::GaussianBlur(image, blurred, cv::Size(5, 5), 1.5);
-   image = blurred;
+  cv::Mat process(const cv::Mat& image) {
+   cv::Mat processed;
+   // Example processing (modify as needed)
+   cv::GaussianBlur(image, processed, cv::Size(5, 5), 0);
    std::cout << "Processing in V2 (Gaussian Blur)" << std::endl;
+   return processed;
   }
  };
 
