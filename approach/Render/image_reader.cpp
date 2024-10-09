@@ -11,7 +11,7 @@ int main() {
  // Open a file dialog to select an image
  const char* filename = tinyfd_openFileDialog(
      "Select an image file",
-     "",
+     "C:\Users\maria\Desktop"
      1,  // Only allow one file to be selected
      nullptr,  // No filter
      nullptr,  // No filter description
@@ -37,7 +37,7 @@ int main() {
  Approach::Render::V4 v4;
  Approach::Render::V5 v5;
 
- // Process the image through various layers
+ // Process the image through layers
  cv::Mat processedImage = v1.process(image);
  processedImage = v2.process(processedImage);
  processedImage = v3.process(processedImage);

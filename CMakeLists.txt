@@ -5,7 +5,7 @@ project(RenderLayer VERSION 1.0)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Path to OpenCV installation
+# The path to OpenCV installation
 set(OpenCV_DIR "C:/opencv_install/x64/mingw/lib")
 
 # Find OpenCV
@@ -20,13 +20,13 @@ endif()
 # Include OpenCV directories
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-# Path to TinyFileDialogs
+# Path to TinyFileDialogs, identifying images
 set(TINYFILEDIALOGS_DIR "C:/Users/maria/Downloads/tinyfiledialogs-current/tinyfiledialogs")
 
-# Include TinyFileDialogs headers
+# TinyFileDialogs headers
 include_directories(${TINYFILEDIALOGS_DIR})
 
-# Define executables and source files
+# executables and source files 
 add_executable(render
         approach/Stream/container.h
         approach/Render/node.h

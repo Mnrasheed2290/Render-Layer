@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
- // Function to open a file dialog and return the selected file path
+ // This Function is to open a file dialog and return the selected file path
  const char* tinyfd_openFileDialog(
      const char* aTitle,
      const char* aDefaultPathAndFile,
